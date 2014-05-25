@@ -2,70 +2,76 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-      <title>Bootstrap, from Twitter</title>
+      <title>ISO Fianantial Decoder</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="css/bootstrap.css" rel="stylesheet">
       <link href="css/bootstrap-theme.css" rel="stylesheet">
+      <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
       <script type="text/javascript" src="js/app/implementDecoder.js"></script> 
       <script type="text/javascript" src="js/app/iso8583.js"></script>
-      
+      <script type="text/javascript" src="js/bootstrap.js"></script> 
   </head>
-
   <body>
-    <header>
-      <nav class="navbar navbar-inverse">
-       <div class="container-fluid">
-          <div class="nabvar-header">
-            <a class="navbar-brand">ISO Finantial Decoder</a>   
-          </div>
-        </div> 
-      </nav>
-    </header>
     
-
-
-    <section class="container" id="sectionDecoder">
-      <div class="row">
-        <h5>Insert a ISO message:</h5>
-      </div>
-      <div class="row">
-        <div class="col-md-11">
-          <input class="form-control" type="text" id="isoMessage" placeholder="Message ..."></input>  
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="nabvar-header">
+          <a class="navbar-brand">ISO Finantial Decoder</a>   
         </div>
-        <div class="col-md-1">
-          <button class="btn btn-primary" onclick="decode()">Decode</button>  
-        </div>
-      </div>
-    </section>
+      </div> 
+    </nav>
 
     <br>
     <br>
+    <br>
 
-  <div class="container">
-    <form class="form-horizontal" role="form">
-      <div class="form-group">
-        <label class="col-sm-2 control-label" id="label" for="isoLength">ISO Length</label>
-        <div class="col-sm-4">
-          <input class="form-control" id="isoLength" placeholder="Length"></input>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="messageType" class="col-sm-2 control-label">Message Type</label>
-        <div class="col-sm-4">
-          <input class="form-control" id="messageType" placeholder="MTI">
-        </div>
-      </div>
-    </form>
-  </div> 
-
-  <br>
-
-  <div class="container" id="bits">
-    <div class="row">
+    <div class="container">
       
+      <header>
+        <br><br><br>
+        <div class="col-lg-12">
+          <div class="input-group">
+            <input type="text" class="form-control" id="isoMessage" placeholder="Paste a ISO-8583 Message here and press Go!">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" onclick="decode()">Go!</button>
+              </span>
+          </div>
+        </div>
+      </header>
+<br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <table class="table">
+          <tbody>
+            <tr>
+              <td id="msgLength"><b>Message Length:</b></td>
+              <td id="mti"><b>Message Type:</b></td>
+              <td id="bitmap1"><b>Bitmap 1:</b></td>
+              <td id="bitmap2"><b>Bitmap 2:</b></td>
+            </tr>
+          </tbody>
+        </table>
+      <br>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">Bit Decoded</div>
+      <!-- Table -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nº</th>
+              <th>Enable</th>
+              <th>Description</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody id="rowDecodedContent">
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  
   </body>
 </html>
