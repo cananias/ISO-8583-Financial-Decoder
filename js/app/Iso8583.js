@@ -97,21 +97,21 @@ Iso8583.prototype.getBitValue = function(bitconf) {
       switch(bitconf[bitKeys[i]].split(":")[1].toUpperCase()){
         case "FIXED":
           bitEnd = bitInit+parseInt(bitconf[bitKeys[i]].split(":")[2]);
-          bitValues["bit"+bitKeys[i]] = this.isoMessage.substring(bitInit,bitEnd);
+          bitValues["bit"+bitKeys[i]] = this.isoMessage.substring(bitInit,bitEnd)+":"+bitconf[bitKeys[i]];
           bitInit = bitEnd;
           break;
         case "LVAR":
           bitEnd = bitInit+parseInt(this.isoMessage.substring(bitInit,bitInit+1))+1;
-          bitValues["bit"+bitKeys[i]] = this.isoMessage.substring(bitInit+1,bitEnd);
+          bitValues["bit"+bitKeys[i]] = this.isoMessage.substring(bitInit+1,bitEnd)+":"+bitconf[bitKeys[i]];
           bitInit = bitEnd;
         case "LLVAR":
           bitEnd = bitInit+parseInt(this.isoMessage.substring(bitInit,bitInit+2))+2;
-          bitValues["bit"+bitKeys[i]] = this.isoMessage.substring(bitInit+2,bitEnd);
+          bitValues["bit"+bitKeys[i]] = this.isoMessage.substring(bitInit+2,bitEnd)+":"+bitconf[bitKeys[i]];
           bitInit = bitEnd;
           break;
         case "LLLVAR":
           bitEnd = bitInit+parseInt(this.isoMessage.substring(bitInit,bitInit+3))+3;
-          bitValues["bit"+bitKeys[i]] = this.isoMessage.substring(bitInit+3,bitEnd);
+          bitValues["bit"+bitKeys[i]] = this.isoMessage.substring(bitInit+3,bitEnd)+":"+bitconf[bitKeys[i]];
           bitInit = bitEnd;
           break;
       }
@@ -304,6 +304,7 @@ Iso8583.prototype.defaultIsoConf = function() {
 var trama = '02660100F23864010CE0800020000000000040001655703950094958650150000000000008000409154531706314184530040959994420121180020014992000008583062      00000001980020014992   PAYPAL                 4029357733    LUX0320105601702000000000000000000000059015000000000000000078003032';
 var tram2 = '0163020042000400000000021612345678901234560609173030123456789ABC1000123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789';
 var iso = new Iso8583(trama);
-
-debug("\n"+iso.decodeTLV(iso.msgDecoded.bit114))
+//000008583062
+//000008583062
+debug("\n"+iso.msgDecoded.bit37.split(":")[0])
 */
