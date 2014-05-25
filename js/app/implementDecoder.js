@@ -18,7 +18,7 @@ function decode(){
       if (iso.msgDecoded['bit'+i] != null) {
         bitValue = (iso.msgDecoded['bit'+i]).split(":");
         console.log(bitValue);
-        isoDecoded = isoDecoded+'<tr><td>'+i+'</td><td>Yes</td><td>'+bitValue[4]+'</td><td>'+bitValue[0]+'</td>'
+        isoDecoded = isoDecoded+'<tr><td>'+i+'</td><td>Yes</td><td>'+bitValue[4]+'</td><td><pre>['+bitValue[0]+']</pre></td>'
       };
     };
 
